@@ -16,7 +16,7 @@ class NetworkManager{
     //MARK: - Variables
     
     
-    
+    static var netInstance = NetworkManager()
     
     //MARK: - Const
     
@@ -37,8 +37,12 @@ class NetworkManager{
 //MARK: - Private func
 
 extension NetworkManager {
-    private func sendRequest(url: URL, _method: HTTPMethod, _params: [String:Any]?, headers: HTTPHeaders?, completionHandler: @escaping (_ json: JSON, _ statusCode: Int?) -> ()){
-        AF.request(url, method: _method, parameters: _params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+    private func sendRequest(address: String, _method: HTTPMethod, _params: [String:Any]?, headers: HTTPHeaders?, completionHandler: @escaping (_ json: JSON, _ statusCode: Int?) -> ()){
+        AF.request(address, method: _method, parameters: _params, encoding: URLEncoding.default).responseJSON { response in
+        print("Request is ")
+            print(response.request ?? "No request")
+            print("Responce is")
+            print(response.response ?? "No response")
             guard let statusCode = response.response?.statusCode else { return }
 
             if (200..<300).contains(statusCode) {
@@ -59,10 +63,10 @@ extension NetworkManager {
     //    https://samples.openweathermap.org/data/2.5/find?lat=55.5&lon=37.5&cnt=10&appid=b6907d289e10d714a6e88b30761fae22
     //    https://api.openweathermap.org/data/2.5/find?lat=55.5&lon=37.5&cnt=10
     
-    func getWeatherCitiesInCycle(coords: Coord, sityCount: Int, appId: String, completionHandler: @escaping ([Town]?) -> Void){
-        let params: [String:Any] = ["lat":coords.lattitude, "lon": coords.longitude, "cnt":sityCount, "appid":appId]
+    func getWeatherCitiesInCycle(coords: Coord, cityCount: Int, appId: String, completionHandler: @escaping ([Town]?) -> Void){
+        let params: [String:Any] = ["lat": coords.lattitude, "lon": coords.longitude, "cnt": cityCount, "appid": appId]
         
-        self.sendRequest(url: URL(string: NetworkManager.weatherHost)!, _method: .get, _params: params, headers: WeatherHttpHeader().get(), completionHandler: {
+        self.sendRequest(address: NetworkManager.getCicleCites, _method: .get, _params: params, headers: WeatherHttpHeader().get(), completionHandler: {
             json, statusCode in
             
             if let towns:[Town]? = try? JSONDecoder().decode([Town].self, from: json.rawData()){

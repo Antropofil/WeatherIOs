@@ -28,8 +28,8 @@ class TownListViewController : UIViewController {
 //    var landscapeCell = "TableCellTwoColumnView"
 
     var countOfCities: Int = 20
-    
-    
+        
+    var netManager = NetworkManager.netInstance
     //MARK - Consts
     
     let rostovCoords = Coord(lat: 47.2364, lon: 39.7139)
@@ -42,6 +42,12 @@ class TownListViewController : UIViewController {
         
         self.cityTableView.rowHeight = UITableView.automaticDimension
         self.cityTableView.estimatedRowHeight = 44.0
+
+        let apiKey = "96cd7c9c3848ac37bd05c4e0bc472143"
+        netManager.getWeatherCitiesInCycle(coords: rostovCoords, cityCount: countOfCities, appId: apiKey, completionHandler: {towns in
+            guard let listOfTowns = towns else {return}
+            self.listTowns = listOfTowns
+        })
         
         listTowns = [Town(id: 0, name: "Moscow"), Town(id: 1, name: "Tula")]
         self.cityTableView.register(UINib(nibName: "TableCellView", bundle: nil), forCellReuseIdentifier: portraitCell)
@@ -53,10 +59,13 @@ class TownListViewController : UIViewController {
 //MARK - TableDelegate
 
 extension TownListViewController : UITableViewDelegate {
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let townWeatherVC = TownWetherViewController()
-        townWeatherVC.townWeather = self.listTowns[indexPath.row]
-        self.navigationController?.pushViewController(townWeatherVC, animated: true)
+//        let townWeatherVC = TownWetherViewController()
+//        townWeatherVC.townWeather = self.listTowns[indexPath.row]
+//        self.navigationController?.pushViewController(townWeatherVC, animated: true)
+        
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,7 +76,8 @@ extension TownListViewController : UITableViewDelegate {
         return listTowns.count
     }
 }
-    
+
+
 //MARK - TableDataSource
 
 extension TownListViewController : UITableViewDataSource {

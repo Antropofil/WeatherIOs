@@ -15,9 +15,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fcs-Y0-YJO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fcs-Y0-YJO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fjb-y7-2KK" id="UiE-Pn-AKN"/>
+                                    <outlet property="delegate" destination="fjb-y7-2KK" id="U0I-Je-3BF"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -31,7 +35,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="yHT-oL-LHd"/>
                     <connections>
-                        <outlet property="cityTableView" destination="fcs-Y0-YJO" id="JbC-4p-Hyp"/>
+                        <outlet property="cityTableView" destination="fcs-Y0-YJO" id="1sZ-Em-Z5K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ArF-4b-lvM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
