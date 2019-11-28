@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D7E1A0D23882A36007F3D86 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E1A0C23882A36007F3D86 /* DataManager.swift */; };
 		5D9F952C23841A97006ECDC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9F952B23841A97006ECDC3 /* AppDelegate.swift */; };
 		5D9F952E23841A97006ECDC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9F952D23841A97006ECDC3 /* SceneDelegate.swift */; };
 		5D9F953023841A97006ECDC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9F952F23841A97006ECDC3 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D7E1A0C23882A36007F3D86 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5D9F952823841A97006ECDC3 /* WeatherIOs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherIOs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D9F952B23841A97006ECDC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D9F952D23841A97006ECDC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				5D9F955823851588006ECDC3 /* HttpHeader.swift */,
 				5D9F955A238520D3006ECDC3 /* NetworkManager.swift */,
+				5D7E1A0C23882A36007F3D86 /* DataManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				5D9F952523841A97006ECDC3 /* Frameworks */,
 				5D9F952623841A97006ECDC3 /* Resources */,
 				C4A83D59250BA0E98C479F0D /* [CP] Embed Pods Frameworks */,
+				E507B1E76606B45A48C520B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -286,6 +290,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeatherIOs/Pods-WeatherIOs-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E507B1E76606B45A48C520B4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeatherIOs/Pods-WeatherIOs-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeatherIOs/Pods-WeatherIOs-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeatherIOs/Pods-WeatherIOs-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -304,6 +325,7 @@
 				5D9F9546238420A6006ECDC3 /* MapViewController.swift in Sources */,
 				5D9F952E23841A97006ECDC3 /* SceneDelegate.swift in Sources */,
 				5D9F955223842FEA006ECDC3 /* TableCellTwoColumnView.swift in Sources */,
+				5D7E1A0D23882A36007F3D86 /* DataManager.swift in Sources */,
 				5D9F955D23856F1E006ECDC3 /* TownWetherViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

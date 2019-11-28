@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Города-->
         <scene sceneID="YbJ-4o-VfN">
             <objects>
                 <viewController id="fjb-y7-2KK" customClass="TownListViewController" customModule="WeatherIOs" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +33,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MiH-OX-RNj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="yHT-oL-LHd"/>
+                    <tabBarItem key="tabBarItem" title="Города" id="yHT-oL-LHd"/>
                     <connections>
                         <outlet property="cityTableView" destination="fcs-Y0-YJO" id="1sZ-Em-Z5K"/>
                     </connections>
@@ -42,7 +42,7 @@
             </objects>
             <point key="canvasLocation" x="676" y="338"/>
         </scene>
-        <!--Item 1-->
+        <!--Карта-->
         <scene sceneID="qq3-jT-y3f">
             <objects>
                 <viewController id="pk6-i6-bPn" customClass="MapViewController" customModule="WeatherIOs" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,20 +50,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rz7-kh-KWr">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZM-vt-Cgr" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                            </mapView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="rz7-kh-KWr" firstAttribute="leading" secondItem="g3h-pY-tdw" secondAttribute="leading" id="3HR-Ew-bhQ"/>
-                            <constraint firstItem="rz7-kh-KWr" firstAttribute="top" secondItem="NZl-1s-2OR" secondAttribute="top" id="OqT-3i-MWA"/>
-                            <constraint firstItem="NZl-1s-2OR" firstAttribute="bottom" secondItem="rz7-kh-KWr" secondAttribute="bottom" id="SLP-yX-gXP"/>
-                            <constraint firstItem="NZl-1s-2OR" firstAttribute="trailing" secondItem="rz7-kh-KWr" secondAttribute="trailing" id="dZH-x3-geP"/>
+                            <constraint firstItem="cZM-vt-Cgr" firstAttribute="leading" secondItem="NZl-1s-2OR" secondAttribute="leading" id="28n-VG-4QD"/>
+                            <constraint firstItem="cZM-vt-Cgr" firstAttribute="top" secondItem="NZl-1s-2OR" secondAttribute="top" id="7GO-s1-7Hc"/>
+                            <constraint firstItem="NZl-1s-2OR" firstAttribute="bottom" secondItem="cZM-vt-Cgr" secondAttribute="bottom" id="8Zz-dC-5B7"/>
+                            <constraint firstItem="NZl-1s-2OR" firstAttribute="trailing" secondItem="cZM-vt-Cgr" secondAttribute="trailing" id="cMh-Es-Zns"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NZl-1s-2OR"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Bsb-Hw-f7Y"/>
+                    <tabBarItem key="tabBarItem" title="Карта" id="Bsb-Hw-f7Y"/>
+                    <connections>
+                        <outlet property="mapView" destination="cZM-vt-Cgr" id="4TW-th-E8I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TuL-o5-fA4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

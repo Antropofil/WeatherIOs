@@ -13,6 +13,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqt-82-DfR">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="brt-DB-0aL"/>
+                    </constraints>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="911-nY-jBw" userLabel="label">
                     <rect key="frame" x="15" y="5" width="290" height="558"/>
                     <constraints>
@@ -25,16 +31,21 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="aqt-82-DfR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="83I-Pb-HBM"/>
                 <constraint firstAttribute="bottom" secondItem="911-nY-jBw" secondAttribute="bottom" constant="5" id="Bfl-TJ-s0j"/>
                 <constraint firstItem="911-nY-jBw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="S7t-EI-NZA"/>
                 <constraint firstItem="911-nY-jBw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="c1n-E1-ltg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="aqt-82-DfR" secondAttribute="bottom" id="hGg-L7-rby"/>
                 <constraint firstAttribute="trailing" secondItem="911-nY-jBw" secondAttribute="trailing" constant="15" id="mzO-yb-UU1"/>
+                <constraint firstItem="aqt-82-DfR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sOi-ce-9A9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aqt-82-DfR" secondAttribute="trailing" id="ydo-jm-qk2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="cellButton" destination="aqt-82-DfR" id="KVK-jr-XZ5"/>
                 <outlet property="townLabel" destination="911-nY-jBw" id="jfT-Xy-dPl"/>
             </connections>
-            <point key="canvasLocation" x="133" y="152"/>
+            <point key="canvasLocation" x="113" y="406"/>
         </view>
     </objects>
 </document>

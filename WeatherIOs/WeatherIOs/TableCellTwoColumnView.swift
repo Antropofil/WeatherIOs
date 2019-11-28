@@ -23,8 +23,8 @@ class TableCellTwoColumnView : UITableViewCell {
 extension TableCellTwoColumnView {
     func setupTwoColumnCell(model1: Town, model2: Town) {
         column1.text = model1.name
-        column1.tag = model1.id
+        column1.tag = model1.id ?? -1
         column2.text = model2.name
-        column2.tag = model2.id
+        column2.tag = model2.id ?? -1
     }
 }

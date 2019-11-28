@@ -11,7 +11,7 @@ import UIKit
 
 class TownListViewController : UIViewController {
     
-        
+    
     //MARK - Outlets
     
     @IBOutlet weak var cityTableView: UITableView!
@@ -25,14 +25,12 @@ class TownListViewController : UIViewController {
     
     var portraitCell = "TableCellView"
     
-//    var landscapeCell = "TableCellTwoColumnView"
-
-    var countOfCities: Int = 20
-        
-    var netManager = NetworkManager.netInstance
-    //MARK - Consts
+    var dataManager = DataManager.instance
     
-    let rostovCoords = Coord(lat: 47.2364, lon: 39.7139)
+//    var landscapeCell = "TableCellTwoColumnView"
+    
+    
+    //MARK - Consts
     
     
     //MARK - Override methods
@@ -40,36 +38,54 @@ class TownListViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.cityTableView.rowHeight = UITableView.automaticDimension
         self.cityTableView.estimatedRowHeight = 44.0
-
-        let apiKey = "96cd7c9c3848ac37bd05c4e0bc472143"
-        netManager.getWeatherCitiesInCycle(coords: rostovCoords, cityCount: countOfCities, appId: apiKey, completionHandler: {towns in
-            guard let listOfTowns = towns else {return}
-            self.listTowns = listOfTowns
-        })
+        self.cityTableView.rowHeight = UITableView.automaticDimension
         
-        listTowns = [Town(id: 0, name: "Moscow"), Town(id: 1, name: "Tula")]
         self.cityTableView.register(UINib(nibName: "TableCellView", bundle: nil), forCellReuseIdentifier: portraitCell)
 //        self.cityTableView.register(UINib(nibName: "TableCellTwoColumnView", bundle: nil), forCellReuseIdentifier: landscapeCell)
+        
+        self.listTowns = self.dataManager.townList
+        
+        self.cityTableView.reloadData()
     }
+    
 }
 
     
 //MARK - TableDelegate
 
 extension TownListViewController : UITableViewDelegate {
+    
+    
+    
+    func changeCellText(indexPath: IndexPath) {
+        
+        let cell = (self.cityTableView.cellForRow(at: indexPath) as! TableCellView)
+        let town = self.listTowns[indexPath.row]
+        let newText = cell.isSelected ? """
+            \(town.name)
+            Temperature is \(town.main?.temp ?? -273.15)
+            
+            
+            MuliLine???
+            """ : (town.name)
+        cell.changeLabelText(newText: newText)
+        self.cityTableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.changeCellText(indexPath: indexPath)
 //        let townWeatherVC = TownWetherViewController()
 //        townWeatherVC.townWeather = self.listTowns[indexPath.row]
 //        self.navigationController?.pushViewController(townWeatherVC, animated: true)
+//
+//        self.cityTableView.reloadData()
+//        self.cityTableView.cellForRow(at: indexPath).
         
+//        self.cityTableView.cellForRow(at: indexPath)?.isSelected
         
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
+//        cityTableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,6 +98,7 @@ extension TownListViewController : UITableViewDelegate {
 
 extension TownListViewController : UITableViewDataSource {
     
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        if(position) {
 //            let cell = self.cityTableView.dequeueReusableCell(withIdentifier: landscapeCell, for: indexPath) as! TableCellTwoColumnView
@@ -90,10 +107,28 @@ extension TownListViewController : UITableViewDataSource {
 //        }
         
         let cell = self.cityTableView.dequeueReusableCell(withIdentifier: portraitCell, for: indexPath) as! TableCellView
-        cell.setupCell(model: [listTowns[indexPath.row]])
+        cell.setupCell(model: listTowns[indexPath.row], index: indexPath.row, delegate: self)
         return cell
     }
     
     
 }
 
+
+//MARK - CellDelegate
+
+extension TownListViewController: CellDelegate {
+    func handleExpandCloseCell(cellView: TableCellView) {
+        let expandableCellNumber = cellView.cellButton!.tag
+        let expandedCellNumber = self.listTowns.firstIndex{($0.isSelected ?? false)} ?? -1
+        
+        self.listTowns[expandableCellNumber].isSelected = !(self.listTowns[expandableCellNumber].isSelected ?? false)
+        if(expandedCellNumber >= 0 && expandableCellNumber != expandedCellNumber){
+            self.listTowns[expandedCellNumber].isSelected = false
+        } else{
+            self.cityTableView.reloadRows(at: [IndexPath(row: expandableCellNumber, section: 0)], with: .automatic)
+            return
+        }
+        self.cityTableView.reloadRows(at: [IndexPath(row: expandedCellNumber, section: 0), IndexPath(row: expandableCellNumber, section: 0)], with: .automatic)
+    }
+}

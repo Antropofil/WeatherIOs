@@ -10,68 +10,72 @@ import Foundation
 
 struct Town : Codable {
     
-    var id: Int = 0
-    
-    var name: String = ""
-    
-    var coord: [Coord]?
-    
-    var temperature: Float = 0
+    var clouds: Clouds?
     
     var main: Main?
     
-    var dt: Int = 0
+    var coord: Coord?
     
-    var wind: Wind?
+    var dt: Int?
     
     var sys: Sys?
     
-    var rain: Int?
+    var id: Int?
     
     var snow: Int?
     
-    var clouds: Clouds?
+    var rain: Int?
+    
+    var wind: Wind?
+    
+    var weather: [Weather]?
+    
+    var name: String = ""
+    
+    var isSelected: Bool?
+    
+//    var temperature: Float = 0
 }
 
 struct Clouds : Codable {
-    var all: Int = 0
+    var all: Int?
+}
+
+struct Main : Codable {
+    var humidity: Float?
+    var pressure: Int?
+    var temp_max: Float?
+    var temp: Float?
+    var temp_min: Float?
+}
+
+struct Coord : Codable {
+    var lat: Float
+    var lon: Float
+    init(lat: Float, lon: Float){
+        self.lat = lat
+        self.lon = lon
+    }
+}
+
+struct Sys : Codable {
+    var country: String = ""
+}
+
+struct Wind : Codable {
+    var speed: Float?
+    var deg: Int?
+//    var gust: Int = 0
 }
 
 struct Weather : Codable {
-    var id: Int = 0
-    
     var main: String = ""
     
     var description: String = ""
     
     var icon: String = ""
-}
-
-struct Coord : Codable {
-    var lattitude: Float = 0.0
-    var longitude: Float = 0.0
-    init(lat: Float, lon: Float){
-        self.lattitude = lat
-        self.longitude = lon
-    }
-}
-
-struct Main : Codable {
-    var temp: Float = 0
-    var pressure: Int = 0
-    var humidity: Float = 0
-    var temp_min: Float = 0
-    var temp_max: Float = 0
-}
-
-struct Wind : Codable {
-    var speed: Float = 0
-    var deg: Int = 0
-    var gust: Int = 0
-}
-
-struct Sys : Codable {
-    var country: String = ""
+    
+    var id: Int?
 }
 
 
