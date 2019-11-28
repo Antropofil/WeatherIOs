@@ -10,31 +10,29 @@ import Foundation
 
 struct Town : Codable {
     
-    var clouds: Clouds?
-    
-    var main: Main?
-    
-    var coord: Coord?
-    
-    var dt: Int?
-    
-    var sys: Sys?
+//    var rain: Int?
     
     var id: Int?
     
-    var snow: Int?
+//    var clouds: Clouds?
     
-    var rain: Int?
+//    var snow: Int?
     
-    var wind: Wind?
+    var coord: Coord?
     
-    var weather: [Weather]?
+    var main: Main?
     
     var name: String = ""
     
-    var isSelected: Bool?
+    var wind: Wind?
     
-//    var temperature: Float = 0
+//    var dt: Int32?
+    
+    var weather: [Weather]?
+    
+    var sys: Sys?
+    
+    var isSelected: Bool?
 }
 
 struct Clouds : Codable {
@@ -42,17 +40,17 @@ struct Clouds : Codable {
 }
 
 struct Main : Codable {
-    var humidity: Float?
     var pressure: Int?
-    var temp_max: Float?
-    var temp: Float?
-    var temp_min: Float?
+    var temp_min: Double?
+    var temp_max: Double?
+    var temp: Double?
+    var humidity: Double?
 }
 
 struct Coord : Codable {
-    var lat: Float
-    var lon: Float
-    init(lat: Float, lon: Float){
+    var lat: Double
+    var lon: Double
+    init(lat: Double, lon: Double){
         self.lat = lat
         self.lon = lon
     }
@@ -63,7 +61,7 @@ struct Sys : Codable {
 }
 
 struct Wind : Codable {
-    var speed: Float?
+    var speed: Double?
     var deg: Int?
 //    var gust: Int = 0
 }

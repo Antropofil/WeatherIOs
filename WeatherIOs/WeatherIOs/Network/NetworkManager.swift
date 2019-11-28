@@ -13,8 +13,7 @@ import SwiftyJSON
 class NetworkManager{
     
     
-    //MARK: - Variables
-    
+    //MARK: - Variables    
     
     static var netInstance = NetworkManager()
     
@@ -60,11 +59,13 @@ extension NetworkManager {
 
 extension NetworkManager {
     func getWeatherCitiesInCycle(coords: Coord, cityCount: Int, appId: String, completionHandler: @escaping ([Town]?) -> Void){
-        let params: [String:Any] = ["lat": coords.lat, "lon": coords.lon, "cnt": cityCount, "appid": appId, "units": metricUnit, "lang": localLang]
+        let params: [String:Any] = ["lat": Float(coords.lat), "lon": Float(coords.lon), "cnt": cityCount, "appid": appId, "units": metricUnit, "lang": localLang]
         
         self.sendRequest(address: NetworkManager.getCicleCites, _method: .get, _params: params, headers: WeatherHttpHeader().get(), completionHandler: {
-            json, statusCode in            
+            json, statusCode in
+            print(json)
             if let towns:[Town]? = try? JSONDecoder().decode([Town].self, from: json["list"].rawData()){
+                print(json["list"])
                 completionHandler(towns)
                 return
             }

@@ -46,27 +46,15 @@
         <scene sceneID="qq3-jT-y3f">
             <objects>
                 <viewController id="pk6-i6-bPn" customClass="MapViewController" customModule="WeatherIOs" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="g3h-pY-tdw">
+                    <view key="view" contentMode="scaleToFill" id="g3h-pY-tdw" customClass="GMSMapView" customModule="WeatherIOs" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZM-vt-Cgr" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="cZM-vt-Cgr" firstAttribute="leading" secondItem="NZl-1s-2OR" secondAttribute="leading" id="28n-VG-4QD"/>
-                            <constraint firstItem="cZM-vt-Cgr" firstAttribute="top" secondItem="NZl-1s-2OR" secondAttribute="top" id="7GO-s1-7Hc"/>
-                            <constraint firstItem="NZl-1s-2OR" firstAttribute="bottom" secondItem="cZM-vt-Cgr" secondAttribute="bottom" id="8Zz-dC-5B7"/>
-                            <constraint firstItem="NZl-1s-2OR" firstAttribute="trailing" secondItem="cZM-vt-Cgr" secondAttribute="trailing" id="cMh-Es-Zns"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="NZl-1s-2OR"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Карта" id="Bsb-Hw-f7Y"/>
                     <connections>
-                        <outlet property="mapView" destination="cZM-vt-Cgr" id="4TW-th-E8I"/>
+                        <outlet property="mapView" destination="g3h-pY-tdw" id="4co-Sq-TJ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TuL-o5-fA4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
